@@ -4,6 +4,12 @@ var specialCheck = /[" !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]+/;
 var numbCheck = /[0123456789]/;
 var lAlCheck = /[abcdefghijklmnopqrstuvwxyz]/;
 var uAlCheck = /[ABCDEFGHIJKLMNOPQRSTUVWXYZ]/;
+var specialChar;
+var numb;
+var lAlpha;
+var uAlpha;
+var passwordArray =[];
+
 
 function checkSpecial() {
   specialChar = prompt('Check your Special Charater and try again');
@@ -12,6 +18,7 @@ function checkSpecial() {
     checkSpecial();
   }
   else {
+    passwordArray.push(specialChar);
     return;
   }
 }
@@ -23,6 +30,7 @@ function checkNumb() {
     checkNumb();
   }
   else {
+    passwordArray.push(numb);
     return;
   }
 }
@@ -34,6 +42,7 @@ function checkLalpha() {
     checkLalpha();
   }
   else {
+    passwordArray.push(lAlpha);
     return;
   }
 }
@@ -45,25 +54,34 @@ function checkUalpha() {
     checkUalpha();
   }
   else {
+    passwordArray.push(uAlpha);
     return;
   }
 }
 
+function showPassword(){
+  var addPassword = specialChar + numb + lAlpha + uAlpha;
+  document.inputform.txt.value = addPassword;
+  event.preventDefault();
+}
 
 generatePassword.addEventListener("click", function () {
   // var text = document.inputform.txt.value;
- 
+  //    document.write(text);
     alert("length of your password must b between 8 and 128");
-    var specialChar = prompt('Enter any special characters');
-    if (specialChar === null){
-      return;
+    specialChar = prompt('Enter any special characters');
+     if (specialChar === null){
+       return;
     }
     var sc = specialCheck.test(specialChar);
-    if (sc === false) {
+       if (sc === false) {
       checkSpecial();
     }
+    else {
+      passwordArray.push(specialChar);
+    }
 
-    var numb = prompt('Enter any numbers');
+    numb = prompt('Enter any numbers');
     if (numb === null){
       return;
     }
@@ -71,8 +89,11 @@ generatePassword.addEventListener("click", function () {
     if (nc === false) {
       checkNumb();
     }
+    else {
+      passwordArray.push(numb);
+    }
 
-    var lAlpha = prompt('Enter any lower case alpabet');
+   lAlpha = prompt('Enter any lower case alpabet');
     if (lAlpha === null){
       return;
     }
@@ -80,14 +101,24 @@ generatePassword.addEventListener("click", function () {
     if (lac === false) {
       checkLalpha();
     }
+    else {
+      passwordArray.push(lAlpha);
+    }
 
-    var uAlpha = prompt('Enter any uppercase alphabet');
+   uAlpha = prompt('Enter any uppercase alphabet');
+   passwordArray.push(uAlpha);
     if (uAlpha === null){
       return;
     }
-    var uac = uAlCheck.test(uAlpha);
     if (uac === false) {
       checkUalpha();
     }
+    else {
+      var uac = uAlCheck.test(uAlpha);
+    }
+    document.write (passwordArray);
+showPassword();
 })
 
+// showPassword();
+  
