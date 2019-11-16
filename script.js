@@ -66,8 +66,7 @@ function showPassword(){
 }
 
 generatePassword.addEventListener("click", function () {
-  // var text = document.inputform.txt.value;
-  //    document.write(text);
+ 
     alert("length of your password must b between 8 and 128");
     specialChar = prompt('Enter any special characters');
      if (specialChar === null){
@@ -118,7 +117,4 @@ generatePassword.addEventListener("click", function () {
     }
     document.write (passwordArray);
 showPassword();
-})
-
-// showPassword();
-  
+}) 
