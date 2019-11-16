@@ -27,11 +27,22 @@ function checkNumb() {
   }
 }
 
-function checkLapha() {
+function checkLalpha() {
   lAlpha = prompt('Please check the lower case entry and try again');
   var lac = lAlCheck.test(lAlpha);
   if (lac === false) {
-    checkLapha();
+    checkLalpha();
+  }
+  else {
+    return;
+  }
+}
+
+function checkUalpha() {
+  uAlpha = prompt('Please check the Upper case entry and try again');
+  var uac = uAlCheck.test(uAlpha);
+  if (uac === false) {
+    checkUalpha();
   }
   else {
     return;
@@ -40,26 +51,43 @@ function checkLapha() {
 
 
 generatePassword.addEventListener("click", function () {
-  var text = document.inputform.txt.value;
-  confirm('length of your password must b between 8 and 128');
-  var specialChar = prompt('Enter any special characters');
-  var sc = specialCheck.test(specialChar);
-  if (sc === false) {
-    checkSpecial();
-  }
+  // var text = document.inputform.txt.value;
+ 
+    alert("length of your password must b between 8 and 128");
+    var specialChar = prompt('Enter any special characters');
+    if (specialChar === null){
+      return;
+    }
+    var sc = specialCheck.test(specialChar);
+    if (sc === false) {
+      checkSpecial();
+    }
 
-  var numb = prompt('Enter any numbers');
-  var nc = numbCheck.test(numb);
-  if (nc === false) {
-    checkNumb();
-  }
+    var numb = prompt('Enter any numbers');
+    if (numb === null){
+      return;
+    }
+    var nc = numbCheck.test(numb);
+    if (nc === false) {
+      checkNumb();
+    }
 
-  var lAlpha = prompt('Enter any lower case alpabet');
-  var lac = lAlCheck.test(lAlpha);
-  if (lac === false) {
-    checkLapha();
-  }
+    var lAlpha = prompt('Enter any lower case alpabet');
+    if (lAlpha === null){
+      return;
+    }
+    var lac = lAlCheck.test(lAlpha);
+    if (lac === false) {
+      checkLalpha();
+    }
 
-  var uAlpha = prompt('Enter any uppercase alphabet');
+    var uAlpha = prompt('Enter any uppercase alphabet');
+    if (uAlpha === null){
+      return;
+    }
+    var uac = uAlCheck.test(uAlpha);
+    if (uac === false) {
+      checkUalpha();
+    }
 })
 
