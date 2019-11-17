@@ -8,7 +8,7 @@ var specialChar;
 var numb;
 var lAlpha;
 var uAlpha;
-var passwordArray =[];
+var passwordArray = [];
 
 
 function checkSpecial() {
@@ -59,62 +59,74 @@ function checkUalpha() {
   }
 }
 
-function showPassword(){
-  var addPassword = specialChar + numb + lAlpha + uAlpha;
-  document.inputform.txt.value = addPassword;
+function radomPassword(passwordArray) {
+  var i, x, j;
+  var arrayLength = passwordArray.length;
+  for (i = 0; i < arrayLength; i++) {
+    j = Math.floor(Math.random() * arrayLength);
+    x = passwordArray[i];
+    passwordArray[i] = passwordArray[j];
+    passwordArray[j] = x;
+  }
+  return passwordArray;
+}
+
+function showPassword() {
+  var newPassword = radomPassword(passwordArray)
+  document.inputform.txt.value = newPassword;
   event.preventDefault();
 }
 
 generatePassword.addEventListener("click", function () {
- 
-    alert("length of your password must b between 8 and 128");
-    specialChar = prompt('Enter any special characters');
-     if (specialChar === null){
-       return;
-    }
-    var sc = specialCheck.test(specialChar);
-       if (sc === false) {
-      checkSpecial();
-    }
-    else {
-      passwordArray.push(specialChar);
-    }
 
-    numb = prompt('Enter any numbers');
-    if (numb === null){
-      return;
-    }
-    var nc = numbCheck.test(numb);
-    if (nc === false) {
-      checkNumb();
-    }
-    else {
-      passwordArray.push(numb);
-    }
+  alert("length of your password must b between 8 and 128");
+  specialChar = prompt('Enter any special characters');
+  if (specialChar === null) {
+    return;
+  }
+  var sc = specialCheck.test(specialChar);
+  if (sc === false) {
+    checkSpecial();
+  }
+  else {
+    passwordArray.push(specialChar);
+  }
 
-   lAlpha = prompt('Enter any lower case alpabet');
-    if (lAlpha === null){
-      return;
-    }
-    var lac = lAlCheck.test(lAlpha);
-    if (lac === false) {
-      checkLalpha();
-    }
-    else {
-      passwordArray.push(lAlpha);
-    }
+  numb = prompt('Enter any numbers');
+  if (numb === null) {
+    return;
+  }
+  var nc = numbCheck.test(numb);
+  if (nc === false) {
+    checkNumb();
+  }
+  else {
+    passwordArray.push(numb);
+  }
 
-   uAlpha = prompt('Enter any uppercase alphabet');
-   passwordArray.push(uAlpha);
-    if (uAlpha === null){
-      return;
-    }
-    if (uac === false) {
-      checkUalpha();
-    }
-    else {
-      var uac = uAlCheck.test(uAlpha);
-    }
-    document.write (passwordArray);
-showPassword();
+  lAlpha = prompt('Enter any lower case alpabet');
+  if (lAlpha === null) {
+    return;
+  }
+  var lac = lAlCheck.test(lAlpha);
+  if (lac === false) {
+    checkLalpha();
+  }
+  else {
+    passwordArray.push(lAlpha);
+  }
+
+  uAlpha = prompt('Enter any uppercase alphabet');
+  passwordArray.push(uAlpha);
+  if (uAlpha === null) {
+    return;
+  }
+  if (uac === false) {
+    checkUalpha();
+  }
+  else {
+    var uac = uAlCheck.test(uAlpha);
+  }
+
+  showPassword();
 }) 
