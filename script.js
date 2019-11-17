@@ -1,7 +1,7 @@
 var generatePassword = document.querySelector(".generatepassword");
 var copyToClipboard = document.querySelector(".clipboard");
 var yourSecurePassword = document.querySelector(".yoursecurepassword.value");
-var specialCheck = /[" !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]+/;
+var specialCheck = /[" !"#$£%&'()*+,-./:;<=>?@[\]^_`{|}~"]+/;
 var numbCheck = /[0123456789]/;
 var lAlCheck = /[abcdefghijklmnopqrstuvwxyz]/;
 var uAlCheck = /[ABCDEFGHIJKLMNOPQRSTUVWXYZ]/;
@@ -123,7 +123,6 @@ generatePassword.addEventListener("click", function () {
   }
 
   uAlpha = prompt('Enter any uppercase alphabet');
-  passwordArray.push(uAlpha);
   if (uAlpha === null) {
     return;
   }
@@ -132,7 +131,7 @@ generatePassword.addEventListener("click", function () {
     checkUalpha();
   }
   else {
-    var uac = uAlCheck.test(uAlpha);
+    passwordArray.push(uAlpha);
   }
   //check the length of array.
   var newP = passwordArray.join("");
