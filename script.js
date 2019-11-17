@@ -1,4 +1,5 @@
 var generatePassword = document.querySelector(".generatepassword");
+var copyToClipboard = document.querySelector(".clipboard");
 var yourSecurePassword = document.querySelector(".yoursecurepassword.value");
 var specialCheck = /[" !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]+/;
 var numbCheck = /[0123456789]/;
@@ -79,6 +80,7 @@ function showPassword() {
   event.preventDefault();
 }
 
+//calling generate button.
 generatePassword.addEventListener("click", function () {
 
   alert("length of your password must b between 8 and 128");
@@ -142,3 +144,11 @@ generatePassword.addEventListener("click", function () {
   showPassword();
   }
 }) 
+
+//calling copy on clipboard button
+copyToClipboard.addEventListener("click", function () {
+  var copyText = document.inputform.txt.value;
+  // using the Clipboard API.
+  navigator.clipboard.writeText(copyText).then();
+  alert(copyText + " " + "is been added to your clipboard");
+})
