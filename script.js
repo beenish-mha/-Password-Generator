@@ -72,7 +72,8 @@ function radomPassword(passwordArray) {
 }
 
 function showPassword() {
-  var newPassword = radomPassword(passwordArray)
+  var newPass = radomPassword(passwordArray);
+  newPassword = newPass.join("");
   document.inputform.txt.value = newPassword;
   event.preventDefault();
 }
