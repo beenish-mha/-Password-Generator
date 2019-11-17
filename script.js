@@ -60,6 +60,7 @@ function checkUalpha() {
 }
 
 function radomPassword(passwordArray) {
+
   var i, x, j;
   var arrayLength = passwordArray.length;
   for (i = 0; i < arrayLength; i++) {
@@ -81,6 +82,8 @@ function showPassword() {
 generatePassword.addEventListener("click", function () {
 
   alert("length of your password must b between 8 and 128");
+
+  //checking user enrty and pusing in an array
   specialChar = prompt('Enter any special characters');
   if (specialChar === null) {
     return;
@@ -122,12 +125,20 @@ generatePassword.addEventListener("click", function () {
   if (uAlpha === null) {
     return;
   }
+  var uac = uAlCheck.test(uAlpha);
   if (uac === false) {
     checkUalpha();
   }
   else {
     var uac = uAlCheck.test(uAlpha);
   }
-
+  //check the length of array.
+  var newP = passwordArray.join("");
+  if (newP.length < 8 || newP.length > 128) {
+    alert ("please check the length of your password and try again");
+  }
+  else {
+    //calling the function which show result in the readonly text-box.
   showPassword();
+  }
 }) 
