@@ -11,7 +11,7 @@ var lAlpha;
 var uAlpha;
 var passwordArray = [];
 
-
+//function to ckeck the special chracter entered and pushing into password array!
 function checkSpecial() {
   specialChar = prompt('Check your Special Charater and try again');
   sc = specialCheck.test(specialChar);
@@ -23,7 +23,7 @@ function checkSpecial() {
     return;
   }
 }
-
+//function to check the number entered and pushing into password array!
 function checkNumb() {
   numb = prompt('Check your Number entry and try again');
   nc = numbCheck.test(numb);
@@ -36,6 +36,7 @@ function checkNumb() {
   }
 }
 
+//function to check the lower case alphabet and pushing into password array!
 function checkLalpha() {
   lAlpha = prompt('Please check the lower case entry and try again');
   var lac = lAlCheck.test(lAlpha);
@@ -48,6 +49,7 @@ function checkLalpha() {
   }
 }
 
+// function to check the upper case alphabet and pushing into password array!
 function checkUalpha() {
   uAlpha = prompt('Please check the Upper case entry and try again');
   var uac = uAlCheck.test(uAlpha);
@@ -60,6 +62,7 @@ function checkUalpha() {
   }
 }
 
+//function to creat a random password generating with the user input.
 function radomPassword(passwordArray) {
 
   var i, x, j;
@@ -73,6 +76,7 @@ function radomPassword(passwordArray) {
   return passwordArray;
 }
 
+//displaying random password on the page.
 function showPassword() {
   var newPass = radomPassword(passwordArray);
   newPassword = newPass.join("");
